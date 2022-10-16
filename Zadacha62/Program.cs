@@ -15,37 +15,37 @@ int GetNumber(string message)
 
 int[,] InitMatrix(int m, int n)
 {
-    int[,] matrix = new int[m, m];
+    int[,] matrix = new int[m, n];
 
     int number = 1;
     int top = 0;
     int bottom = m - 1;
     int left = 0;
-    int right = m - 1;
+    int right = n - 1;
 
     while (top <= bottom && left <= right)
     {
         number = Fill(matrix, top, top, left, right, number);
         top++;
-        if(number>m*m)
+        if (number > m * n)
         {
             break;
         }
         number = Fill(matrix, top, bottom, right, right, number);
         right--;
-         if(number>m*m)
+        if (number > m * n)
         {
             break;
         }
         number = Fill(matrix, bottom, bottom, right, left, number);
         bottom--;
-         if(number>m*m)
+        if (number > m * n)
         {
             break;
         }
         number = Fill(matrix, bottom, top, left, left, number);
         left++;
-         if(number>m*m)
+        if (number > m * n)
         {
             break;
         }
