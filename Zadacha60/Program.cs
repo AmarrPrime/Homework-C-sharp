@@ -6,7 +6,6 @@
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1) */
 
-
 int GetNumber(string message)
 {
     Console.WriteLine(message);
@@ -17,7 +16,10 @@ int GetNumber(string message)
 int[,,] InitMatrix3D(int x, int y, int z)
 {
     int[,,] matrix = new int[x, y, z];
-    int number = 10;
+    Random rand = new Random();
+
+    Dictionary<int, bool> book = new Dictionary<int, bool>();
+    int number = 0;
 
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -25,8 +27,13 @@ int[,,] InitMatrix3D(int x, int y, int z)
         {
             for (int k = 0; k < matrix.GetLength(2); k++)
             {
+                number = rand.Next(10, 100);
+                while (book.ContainsKey(number))
+                {
+                    number = rand.Next(10, 100);
+                }
                 matrix[i, j, k] = number;
-                number++;
+                book.Add(number, true);
             }
         }
     }
@@ -47,6 +54,19 @@ void PrintMatrix(int[,,] matrix)
         Console.WriteLine();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
